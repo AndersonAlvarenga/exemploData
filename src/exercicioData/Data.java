@@ -1,5 +1,6 @@
 package exercicioData;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 import java.text.ParseException;
@@ -12,7 +13,7 @@ public class Data {
 		SimpleDateFormat x = new SimpleDateFormat("dd/MM/yyyy");// para manter neste padrao
 		SimpleDateFormat y = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// para este padrao
 		SimpleDateFormat z = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		z.setTimeZone(TimeZone.getTimeZone("GMT"));//Fazer isso para colocar no horario de greenuich
+		z.setTimeZone(TimeZone.getTimeZone("GMT"));// Fazer isso para colocar no horario de greenuich
 		Date datax = x.parse("25/10/2018");
 		Date datay = y.parse("25/10/2018 15:23:34");
 		Date dataatual = new Date();
@@ -39,6 +40,17 @@ public class Data {
 		System.out.println(y.format(data3));
 		System.out.println(y.format(data4));
 		System.out.println(z.format(data5));
+		// exemplo para add mais dias minutos dentro outros na data
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(data5);
+		cal.add(Calendar.HOUR_OF_DAY, 4);//adiciona 4 horas data tem mais opcoes
+		data5=cal.getTime();
+		int minute = cal.get(Calendar.MINUTE);//usado para recuperar uma parte especifica da data
+		int mes = 1 + cal.get(Calendar.MONTH);
+		System.out.println(z.format(data5));
+		System.out.println(minute);
+		System.out.println(mes);
+
 	}
 
 }
